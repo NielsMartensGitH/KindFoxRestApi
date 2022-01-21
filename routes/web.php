@@ -15,6 +15,16 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+
+
 $router->group(['prefix' => 'api'], function () use ($router) {
-  $router->get('',  ['uses' => 'DaycareController@showDaycare']);
+  $router->get('daycares',  ['uses' => 'DaycareController@showDaycares']);
+
+  $router->get('daycares/{id}', ['uses' => 'DaycareController@showOneDayCare']);
+
+  $router->post('authors', ['uses' => 'AuthorController@create']);
+
+  $router->delete('authors/{id}', ['uses' => 'AuthorController@delete']);
+
+  $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
 });
