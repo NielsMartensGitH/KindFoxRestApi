@@ -20,10 +20,22 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
-    public function showParentPosts($id)
+    public function showPosts($daycare_id, $child_id)
     {
-        $result = DB::select("SELECT * FROM posts WHERE posts.parent_id = $id OR posts.daycare_id = ");
+        $result = DB::select("SELECT * FROM posts 
+        WHERE posts.daycare_id = $daycare_id 
+        AND (posts.child_id = $child_id OR posts.child_id = 0)"); // bij meerdere kinderen ???
         return json_encode($result);
     }
 
+    public function showChildParent($id)
+    {
+        $result = DB::select("SELECT * FROM children_parents 
+        JOIN children 
+        ON children.id = children_parents.child_id
+        JOIN parents
+        ON parents.id = children_parents.parenT_id
+        WHERE parents.id = $id" );
+        return json_encode($result);
+    }
 }
