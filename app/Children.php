@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Daycare extends Model
+class Children extends Model
 {
 
     /**
@@ -13,7 +13,7 @@ class Daycare extends Model
      * @var array
      */
     protected $fillable = [
-      'name', 'amount', 'email', 'password', 'street', 'country', 'city', 'phone', 'postal_code', 'btw_number', 'capacity_per_employee', 'employee_amount', 'avatar'         
+      'child_firstname', 'child_lastname', 'age', 'childcode'
     ];
 
     /**

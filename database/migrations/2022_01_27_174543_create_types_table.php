@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDaycareTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDaycareTable extends Migration
      */
     public function up()
     {
-        Schema::create('daycare', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('type');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateDaycareTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('daycare');
+        Schema::dropIfExists('types');
     }
 }

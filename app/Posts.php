@@ -13,7 +13,7 @@ class Daycare extends Model
      * @var array
      */
     protected $fillable = [
-      'name', 'amount', 'email', 'password', 'street', 'country', 'city', 'phone', 'postal_code', 'btw_number', 'capacity_per_employee', 'employee_amount', 'avatar'         
+      'type_id', 'child_id', 'picture', 'message', 'daycare_id', 'privacy'         
     ];
 
     /**
