@@ -24,6 +24,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('childparent/{id}', ['uses' => 'DaycareController@showChildParent']);
 
+  $router->get('posts', ['uses' => 'DaycareController@showAllPosts']);
+
   $router->get('posts/{daycare_id}/{child_id}', ['uses' => 'DaycareController@showPosts']);
 
   $router->post('authors', ['uses' => 'AuthorController@create']);
