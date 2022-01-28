@@ -64,11 +64,11 @@ class DaycareController extends Controller
 
     public function deletePost($id)
      {
-        Posts::findOrFail($id)->delete();
+        Daycare::findOrFail($id)->delete();
         return response('Deleted succesfully', 200);        
      }
 
-     public function showAllParents($id)
+     public function showAllParents($daycare_id)
     {
         $result = DB::select("SELECT
         parents.id,
@@ -79,7 +79,8 @@ class DaycareController extends Controller
         parents.daycare_id,
         parents.phone
         FROM parents 
-        WHERE parents.daycare_id = $id");
+        WHERE parents.daycare_id = $daycare_id
+        ");
         return json_encode($result);
     }
 
