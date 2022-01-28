@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
             $table->boolean('privacy');
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->foreign('child_id')->references('id')->on('children')->onDelete('cascade');
-            $table->foreign('daycare_id')->references('id')->on('daycare')->onDelete('cascade');
+            $table->foreign('daycare_id')->references('id')->on('daycares')->onDelete('cascade');
 
         });
     }
