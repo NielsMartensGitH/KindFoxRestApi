@@ -79,7 +79,8 @@ class DaycareController extends Controller
         parents.daycare_id,
         parents.phone
         FROM parents 
-        WHERE parents.daycare_id = $id);
+        WHERE parents.daycare_id = $id");
         return json_encode($result);
     }
+
 }
