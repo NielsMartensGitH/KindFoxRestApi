@@ -42,6 +42,7 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+
     public function showPosts($daycare_id, $child_id)
     {
         $result = DB::select("SELECT * FROM posts 
@@ -66,4 +67,19 @@ class DaycareController extends Controller
         Posts::findOrFail($id)->delete();
         return response('Deleted succesfully', 200);        
      }
+
+     public function showAllParents($id)
+    {
+        $result = DB::select("SELECT
+        parents.id,
+        parents.firstname,
+        parents.lastname,
+        parents.login as email,
+        parents.password,
+        parents.daycare_id,
+        parents.phone
+        FROM parents 
+        WHERE parents.daycare_id = $id);
+        return json_encode($result);
+    }
 }

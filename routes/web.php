@@ -36,4 +36,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 
   $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
+
+  $router->get('{id}/parents', ['uses' => 'DaycareController@showAllParents']);
 });
