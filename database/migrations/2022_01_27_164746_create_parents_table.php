@@ -22,7 +22,7 @@ class CreateParentsTable extends Migration
             $table->string('password');
             $table->integer('daycare_id', false, true);
             $table->string('phone');
-            $table->foreign('daycare_id')->references('id')->on('daycare')->onDelete('cascade');
+            $table->foreign('daycare_id')->references('id')->on('daycares')->onDelete('cascade');
         });
     }
 
