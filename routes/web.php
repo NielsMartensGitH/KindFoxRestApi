@@ -28,9 +28,14 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('posts/{daycare_id}/{child_id}', ['uses' => 'DaycareController@showPosts']);
 
+  $router->delete('posts/{id}', ['uses' => 'DaycareController@deletePost']);
+
   $router->post('authors', ['uses' => 'AuthorController@create']);
 
   $router->delete('authors/{id}', ['uses' => 'AuthorController@delete']);
 
+
   $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
+
+  $router->get('{id}/parents', ['uses' => 'DaycareController@showAllParents']);
 });
