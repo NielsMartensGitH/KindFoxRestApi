@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Daycare extends Model
+class Parents extends Model
 {
 
     /**

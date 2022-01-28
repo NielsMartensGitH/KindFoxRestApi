@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Daycare;
+use App\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -62,7 +63,7 @@ class DaycareController extends Controller
 
     public function deletePost($id)
      {
-        Daycare::findOrFail($id)->delete();
+        Posts::findOrFail($id)->delete();
         return response('Deleted succesfully', 200);        
      }
 }
