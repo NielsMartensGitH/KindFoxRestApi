@@ -38,7 +38,7 @@ class DaycareController extends Controller
         daycares.avatar as daycareavatar
         FROM posts
         JOIN daycares
-        ON daycares.id =  posts.daycare_id");
+        ON daycares.id =  posts.daycare_id ORDER BY posts.created_at DESC");
         return json_encode($result);
     }
 
@@ -62,9 +62,16 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+    public function addPost(Request $request)
+    {
+        $post = Posts::create($request->all());
+
+        return response()->json($post, 201);
+    }
+
     public function deletePost($id)
      {
-        Daycare::findOrFail($id)->delete();
+        Posts::findOrFail($id)->delete();
         return response('Deleted succesfully', 200);        
      }
 
