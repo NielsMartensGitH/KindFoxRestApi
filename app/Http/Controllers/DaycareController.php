@@ -116,5 +116,11 @@ class DaycareController extends Controller
         return response('Deleted succesfully', 200);        
      }
 
+     public function addChild(Request $request)
+    {
+        $post = Children::create($request->all());
+
+        return response()->json($post, 201);
+    }
 
 }

@@ -48,4 +48,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->delete('parents/{id}', ['uses' => 'DaycareController@deleteParent']);
 
   $router->get('children', ['uses' => 'DaycareController@showChildren']);
+
+  $router->post('children', ['uses' => 'DaycareController@addChild']);
 });
