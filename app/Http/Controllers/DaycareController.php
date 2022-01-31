@@ -97,5 +97,11 @@ class DaycareController extends Controller
         return response()->json($post, 201);
     }
 
+    public function deleteParent($id)
+     {
+        Parents::findOrFail($id)->delete();
+        return response('Deleted succesfully', 200);        
+     }
+
 
 }
