@@ -51,6 +51,12 @@ class DaycareController extends Controller
     }
 
 
+    public function showOnePost($id)
+    {
+        $result = DB::select("SELECT * FROM posts WHERE posts.id = $id");
+        return json_encode($result);
+    }
+
     public function showPosts($daycare_id, $child_id)
     {
         $result = DB::select("SELECT * FROM posts 
