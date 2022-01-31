@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Daycare;
+use App\Parents;
 use App\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -81,7 +82,7 @@ class DaycareController extends Controller
         parents.id,
         parents.firstname,
         parents.lastname,
-        parents.login as email,
+        parents.email,
         parents.password,
         parents.daycare_id,
         parents.phone

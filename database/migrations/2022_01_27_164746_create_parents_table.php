@@ -18,7 +18,7 @@ class CreateParentsTable extends Migration
             $table->timestamps();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('login');
+            $table->string('email');
             $table->string('password');
             $table->integer('daycare_id', false, true);
             $table->string('phone');
