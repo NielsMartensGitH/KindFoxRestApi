@@ -82,4 +82,12 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+    public function addParent(Request $request)
+    {
+        $post = Parents::create($request->all());
+
+        return response()->json($post, 201);
+    }
+
+
 }

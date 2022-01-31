@@ -39,5 +39,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
   $router->get('parents', ['uses' => 'DaycareController@showAllParents']);
 
-  $router->post('parents', ['uses' => 'DaycareController@create']);
+  $router->post('parents', ['uses' => 'DaycareController@addParent']);
 });
