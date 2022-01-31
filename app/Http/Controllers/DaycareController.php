@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Daycare;
 use App\Parents;
 use App\Posts;
+use App\Children;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,6 +18,12 @@ class DaycareController extends Controller
 
         // $result = DB::select("SELECT * FROM daycare");
         // return json_encode($result);
+    }
+
+    public function showChildren()
+    {
+        $result = DB::select("SELECT * FROM children");
+        return json_encode($result);
     }
 
     public function showOneDayCare($id)
