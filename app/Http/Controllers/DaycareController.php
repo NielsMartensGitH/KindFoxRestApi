@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Daycare;
-use App\Parents;
 use App\Posts;
+use App\Parents;
 use App\Children;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -51,12 +51,6 @@ class DaycareController extends Controller
     }
 
 
-    public function showOnePost($id)
-    {
-        $result = DB::select("SELECT * FROM posts WHERE posts.id = $id");
-        return json_encode($result);
-    }
-
     public function showPosts($daycare_id, $child_id)
     {
         $result = DB::select("SELECT * FROM posts 
@@ -64,6 +58,13 @@ class DaycareController extends Controller
         AND (posts.child_id = $child_id OR posts.child_id = NULL)");
         return json_encode($result);
     }
+
+    public function showOnePost($id)
+    {
+        $result = DB::select("SELECT * FROM posts WHERE posts.id = $id");
+        return json_encode($result);
+    }
+
 
     public function showChildParent($id)
     {
@@ -105,7 +106,7 @@ class DaycareController extends Controller
 
     public function addParent(Request $request)
     {
-        $post = Parents::create($request->all());
+        $parent = Parents::create($request->all());
 
         return response()->json($post, 201);
     }
@@ -118,9 +119,22 @@ class DaycareController extends Controller
 
      public function addChild(Request $request)
     {
-        $post = Children::create($request->all());
+        $child = Children::create($request->all());
 
         return response()->json($post, 201);
+    }
+
+    public function showOneParent($id)
+    {
+        $result = DB::select("SELECT * FROM parents WHERE parents.id = $id");
+        return json_encode($result);
+    }
+
+    public function updateParent($parent_id, Request $request)
+    {
+        $parent = Parents::findOrFail($parent_id);
+        $parent->update($request->all());
+        return response()->json($parent, 200);
     }
 
 }
