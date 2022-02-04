@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Daycare;
 use App\Posts;
 use App\Parents;
-use App\Children;
+use App\Childrens;
+use App\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,7 @@ class DaycareController extends Controller
 
     public function showChildren()
     {
-        $result = DB::select("SELECT * FROM children");
+        $result = DB::select("SELECT * FROM childrens");
         return json_encode($result);
     }
 
@@ -69,10 +70,10 @@ class DaycareController extends Controller
     public function showChildParent($id)
     {
         $result = DB::select("SELECT * FROM childrenparents 
-        JOIN children 
-        ON children.id = childrenparents.child_id
+        JOIN childrens 
+        ON childrens.id = childrenparents.child_id
         JOIN parents
-        ON parents.id = childrenparents.parenT_id
+        ON parents.id = childrenparents.parent_id
         WHERE parents.id = $id" );
         return json_encode($result);
     }
@@ -88,6 +89,19 @@ class DaycareController extends Controller
      {
         Posts::findOrFail($id)->delete();
         return response('Deleted succesfully', 200);        
+     }
+
+     public function getCommentsByPost($id)
+     {
+        $result = DB::select("SELECT * FROM comments WHERE comments.post_id = $id");
+        return json_encode($result);
+     }
+
+     public function postComment(Request $request)
+     {
+        $comment = Comments::create($request->all());
+
+        return response()->json($comment, 201);
      }
 
      public function showAllParents()
@@ -108,7 +122,7 @@ class DaycareController extends Controller
     {
         $parent = Parents::create($request->all());
 
-        return response()->json($post, 201);
+        return response()->json($parent, 201);
     }
 
     public function deleteParent($id)
@@ -119,9 +133,9 @@ class DaycareController extends Controller
 
      public function addChild(Request $request)
     {
-        $child = Children::create($request->all());
+        $child = Childrens::create($request->all());
 
-        return response()->json($post, 201);
+        return response()->json($child, 201);
     }
 
     public function showOneParent($id)
