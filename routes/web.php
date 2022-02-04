@@ -60,4 +60,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->put('/parents/{parent_id}', ['uses' => 'DaycareController@updateParent']);
   
 
+  $router->get('parents/search/{email}', ['uses' => 'DaycareController@searchlogP']);
+
 });
