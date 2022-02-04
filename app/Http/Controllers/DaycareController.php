@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Daycare;
 use App\Posts;
 use App\Parents;
-use App\Children;
+use App\Childrens;
 use App\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +23,7 @@ class DaycareController extends Controller
 
     public function showChildren()
     {
-        $result = DB::select("SELECT * FROM children");
+        $result = DB::select("SELECT * FROM childrens");
         return json_encode($result);
     }
 
@@ -70,10 +70,10 @@ class DaycareController extends Controller
     public function showChildParent($id)
     {
         $result = DB::select("SELECT * FROM childrenparents 
-        JOIN children 
-        ON children.id = childrenparents.child_id
+        JOIN childrens 
+        ON childrens.id = childrenparents.child_id
         JOIN parents
-        ON parents.id = childrenparents.parenT_id
+        ON parents.id = childrenparents.parent_id
         WHERE parents.id = $id" );
         return json_encode($result);
     }
@@ -97,7 +97,7 @@ class DaycareController extends Controller
         return json_encode($result);
      }
 
-     public function postComment($request)
+     public function postComment(Request $request)
      {
         $comment = Comments::create($request->all());
 
@@ -133,7 +133,7 @@ class DaycareController extends Controller
 
      public function addChild(Request $request)
     {
-        $child = Children::create($request->all());
+        $child = Childrens::create($request->all());
 
         return response()->json($child, 201);
     }

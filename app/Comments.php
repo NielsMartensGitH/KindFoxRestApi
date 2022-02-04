@@ -12,9 +12,7 @@ class Comments extends Model
      *
      * @var array
      */
-    protected $fillable = [
-      'comment', 'post_id', 'parent_id', 'daycare_id'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes excluded from the model's JSON form.

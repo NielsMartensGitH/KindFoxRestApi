@@ -36,7 +36,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('comments/{id}', ['uses' => 'DaycareController@getCommentsByPost']);
 
-  $router->put('posts/{id}', ['uses' => 'DaycareController@postComment']);
+  $router->post('comments', ['uses' => 'DaycareController@postComment']);
 
   $router->post('authors', ['uses' => 'AuthorController@create']);
 
