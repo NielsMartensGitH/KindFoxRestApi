@@ -67,14 +67,12 @@ class DaycareController extends Controller
     }
 
 
-    public function showChildParent($id)
+    public function showChildParent($parent_id)
     {
-        $result = DB::select("SELECT * FROM childrenparents 
-        JOIN childrens 
-        ON childrens.id = childrenparents.child_id
-        JOIN parents
-        ON parents.id = childrenparents.parent_id
-        WHERE parents.id = $id" );
+        $result = DB::select("SELECT * FROM childrens
+        JOIN parents 
+        ON childrens.parent_id = parents.id
+        WHERE childrens.parent_id = $parent_id" );
         return json_encode($result);
     }
 
@@ -153,13 +151,12 @@ class DaycareController extends Controller
 
 
     public function searchlogP($email){
-        $results = Parents::select(
+        $results = DB::select(
             "SELECT * FROM parents WHERE email = '{$email}'
             ");
         return json_encode($results);
         
     }
-
     public function NewDaycare(Request $request){
         $daycare = Daycare::create($request->all());
         return response()->json($daycare, 201);

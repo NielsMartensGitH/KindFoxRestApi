@@ -22,7 +22,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('daycares/{id}', ['uses' => 'DaycareController@showOneDayCare']);
 
-  $router->get('childparent/{id}', ['uses' => 'DaycareController@showChildParent']);
+  $router->get('children/{parent_id}', ['uses' => 'DaycareController@showChildParent']);
 
   $router->get('posts', ['uses' => 'DaycareController@showAllPosts']);
 
@@ -60,7 +60,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->put('/parents/{parent_id}', ['uses' => 'DaycareController@updateParent']);
   
 
-  $router->get('/parents/search/{email}', ['uses' => 'DaycareController@searchlogP']);
+  $router->get('parents/search/{email}', ['uses' => 'DaycareController@searchlogP']);
 
   $router->post("daycares", ['uses' => 'DaycareController@NewDaycare']);
 });
