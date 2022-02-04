@@ -162,6 +162,6 @@ class DaycareController extends Controller
 
     public function NewDaycare(Request $request){
         $daycare = Daycare::create($request->all());
-        return response()->json($post, 201);
+        return response()->json($daycare, 201);
     }
 }
