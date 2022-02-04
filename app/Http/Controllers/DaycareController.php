@@ -139,10 +139,15 @@ class DaycareController extends Controller
 
 
     public function searchlogP($email){
-        $results = DB::select(
+        $results = Parents::select(
             "SELECT * FROM parents WHERE email = '{$email}'
             ");
         return json_encode($results);
         
+    }
+
+    public function NewDaycare(Request $request){
+        $daycare = Daycare::create($request->all());
+        return response()->json($post, 201);
     }
 }
