@@ -19,7 +19,6 @@ class CreateDaycaresTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
-            $table->integer('amount');
             $table->string('email');
             $table->string('password');
             $table->string('street');
@@ -28,8 +27,6 @@ class CreateDaycaresTable extends Migration
             $table->string('postal_code');
             $table->string('btw_number');
             $table->string('phone');
-            $table->integer('capacity_per_employee');
-            $table->integer('employee_amount');
             $table->string('avatar');
 
         });
