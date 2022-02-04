@@ -6,6 +6,7 @@ use App\Daycare;
 use App\Posts;
 use App\Parents;
 use App\Children;
+use App\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -90,6 +91,19 @@ class DaycareController extends Controller
         return response('Deleted succesfully', 200);        
      }
 
+     public function getCommentsByPost($id)
+     {
+        $result = DB::select("SELECT * FROM comments WHERE comments.post_id = $id");
+        return json_encode($result);
+     }
+
+     public function postComment($request)
+     {
+        $comment = Comments::create($request->all());
+
+        return response()->json($comment, 201);
+     }
+
      public function showAllParents()
     {
         $result = DB::select("SELECT
@@ -108,7 +122,7 @@ class DaycareController extends Controller
     {
         $parent = Parents::create($request->all());
 
-        return response()->json($post, 201);
+        return response()->json($parent, 201);
     }
 
     public function deleteParent($id)
@@ -121,7 +135,7 @@ class DaycareController extends Controller
     {
         $child = Children::create($request->all());
 
-        return response()->json($post, 201);
+        return response()->json($child, 201);
     }
 
     public function showOneParent($id)
