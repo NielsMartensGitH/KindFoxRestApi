@@ -161,4 +161,10 @@ class DaycareController extends Controller
         $daycare = Daycare::create($request->all());
         return response()->json($daycare, 201);
     }
+
+    public function deleteChild($id)
+     {
+        Childrens::findOrFail($id)->delete();
+        return response('Deleted succesfully', 200);        
+     }
 }

@@ -63,4 +63,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('parents/search/{email}', ['uses' => 'DaycareController@searchlogP']);
 
   $router->post("daycares", ['uses' => 'DaycareController@NewDaycare']);
+
+  $router->delete('children/{id}', ['uses' => 'DaycareController@deleteChild']);
 });
