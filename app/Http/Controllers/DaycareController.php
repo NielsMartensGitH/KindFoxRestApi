@@ -7,6 +7,7 @@ use App\Posts;
 use App\Parents;
 use App\Childrens;
 use App\Comments;
+use App\Diaries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -48,6 +49,15 @@ class DaycareController extends Controller
         FROM posts
         JOIN daycares
         ON daycares.id =  posts.daycare_id ORDER BY posts.created_at DESC");
+        return json_encode($result);
+    }
+
+
+    public function showAllDiaries()
+    {
+        $result = DB::select("SELECT *
+        FROM diaries
+        ORDER BY diaries.created_at DESC");
         return json_encode($result);
     }
 
