@@ -70,11 +70,15 @@ class DaycareController extends Controller
         diaries.involvement,
         diaries.extra_message,
         diaries.privacy,
+        childrens.child_firstname as child_firstname,
+        childrens.child_lastname as child_lastname,
         daycares.name as daycarename,
         daycares.avatar as daycareavatar
         FROM diaries
         JOIN daycares
         ON daycares.id =  diaries.daycare_id
+        JOIN childrens
+        ON childrens.id = diaries.child_id
         ORDER BY diaries.created_at DESC");
         return json_encode($result);
     }
