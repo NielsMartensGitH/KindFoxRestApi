@@ -74,6 +74,7 @@ class DaycareController extends Controller
         daycares.avatar as daycareavatar
         FROM diaries
         JOIN daycares
+        ON daycares.id =  diaries.daycare_id
         ORDER BY diaries.created_at DESC");
         return json_encode($result);
     }
