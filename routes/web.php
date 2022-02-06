@@ -62,4 +62,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->delete('children/{id}', ['uses' => 'DaycareController@deleteChild']);
 
   $router->get('diaries', ['uses' => 'DaycareController@showAllDiaries']);
+
+  $router->post('diaries', ['uses' => 'DaycareController@addDiary']);
 });

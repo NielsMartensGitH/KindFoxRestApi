@@ -83,6 +83,13 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+    public function addDiary(Request $request)
+    {
+        $diary = Diaries::create($request->all());
+
+        return response()->json($post, 201);
+    }
+
 
     public function showPosts($daycare_id, $child_id)
     {
