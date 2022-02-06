@@ -87,7 +87,7 @@ class DaycareController extends Controller
     {
         $diary = Diaries::create($request->all());
 
-        return response()->json($post, 201);
+        return response()->json($diary, 201);
     }
 
 
@@ -126,6 +126,14 @@ class DaycareController extends Controller
      {
         Posts::findOrFail($id)->delete();
         return response('Deleted succesfully', 200);        
+     }
+
+     public function editPost($id, Request $request)
+     {
+        $post = Posts::findOrFail($id);
+        $post->update($request->all());
+
+        return response()->json($post, 200);
      }
 
      public function getCommentsByPost($id)
