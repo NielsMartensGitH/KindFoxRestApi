@@ -13,7 +13,7 @@ class Diaries extends Model
      * @var array
      */
     protected $fillable = [
-      'type_id', 'child_id', 'food', 'foodSmile', 'sleep', 'sleepSmile', 'poop', 'mood', 'activities','involvement', 'extra_message', 'privacy'        
+      'type_id', 'child_id', 'food', 'foodSmile', 'sleep', 'sleepSmile', 'poop', 'mood', 'activities','involvement', 'extra_message', 'privacy', 'daycare_id'    
     ];
 
     /**

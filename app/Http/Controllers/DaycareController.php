@@ -55,8 +55,25 @@ class DaycareController extends Controller
 
     public function showAllDiaries()
     {
-        $result = DB::select("SELECT *
+        $result = DB::select("SELECT
+        diaries.id,
+        diaries.type_id,
+        diaries.created_at,
+        diaries.child_id,
+        diaries.food,
+        diaries.foodSmile,
+        diaries.sleep,
+        diaries.sleepSmile,
+        diaries.poop,
+        diaries.mood,
+        diaries.activities,
+        diaries.involvement,
+        diaries.extra_message,
+        diaries.privacy,
+        daycares.name as daycarename,
+        daycares.avatar as daycareavatar
         FROM diaries
+        JOIN daycares
         ORDER BY diaries.created_at DESC");
         return json_encode($result);
     }
