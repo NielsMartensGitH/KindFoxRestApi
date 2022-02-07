@@ -155,6 +155,14 @@ class DaycareController extends Controller
         return response('Deleted succesfully', 200); 
      }
 
+     public function editComment($id, Request $request)
+     {
+        $comment = Comments::findOrFail($id);
+        $comment->update($request->all());
+
+        return response()->json($comment, 200);
+     }
+
      public function showAllParents()
     {
         $result = DB::select("SELECT

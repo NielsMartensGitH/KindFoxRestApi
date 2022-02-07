@@ -41,6 +41,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->post('comments', ['uses' => 'DaycareController@postComment']);
 
   $router->delete('comments/{id}', ['uses' => 'DaycareController@deleteComment']);
+
+  $router->put('comments/{id}', ['uses' => 'DaycareController@editComment']);
   
   $router->get('parents', ['uses' => 'DaycareController@showAllParents']);
 
