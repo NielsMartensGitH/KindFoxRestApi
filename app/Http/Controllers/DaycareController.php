@@ -8,6 +8,7 @@ use App\Parents;
 use App\Childrens;
 use App\Comments;
 use App\Diaries;
+use App\Diarycomments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -88,6 +89,12 @@ class DaycareController extends Controller
         $diary = Diaries::create($request->all());
 
         return response()->json($diary, 201);
+    }
+
+    public function getCommentsByDiary($id)
+    {
+        $result = DB::select("SELECT * FROM diarycomments WHERE diarycomments.diary_id = $id");
+        return json_encode($result);
     }
 
 
