@@ -228,4 +228,10 @@ class DaycareController extends Controller
         Childrens::findOrFail($id)->delete();
         return response('Deleted succesfully', 200);        
      }
+     public function searchlogDC($email){
+         $results = DB::select(
+             "SELECT * FROM daycares WHERE email = '{$email}'"
+         );
+         return json_encode($results);
+     }
 }
