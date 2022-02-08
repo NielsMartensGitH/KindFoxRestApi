@@ -54,6 +54,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->post('children', ['uses' => 'DaycareController@addChild']);
 
+  $router->put('/children/{child_id}', ['uses' => 'DaycareController@updateChildCheckIn']);
+
   $router->get('parents/{id}', ['uses' => 'DaycareController@showOneParent']);
 
   $router->put('/parents/{parent_id}', ['uses' => 'DaycareController@updateParent']);

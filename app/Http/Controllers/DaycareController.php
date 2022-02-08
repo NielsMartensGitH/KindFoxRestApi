@@ -111,7 +111,7 @@ class DaycareController extends Controller
         return response()->json($comment, 200);
     }
 
-    public function postDiaryComment(Request $request, $id)
+    public function postDiaryComment(Request $request)
     {
         $comment = Diarycomments::create($request->all());
         return response()->json($comment, 201); 
@@ -235,6 +235,13 @@ class DaycareController extends Controller
         $parent = Parents::findOrFail($parent_id);
         $parent->update($request->all());
         return response()->json($parent, 200);
+    }
+
+    public function updateChildCheckIn($child_id, Request $request)
+    {
+        $child = Childrens::findOrFail($child_id);
+        $child->update($request->all());
+        return response()->json($child, 200);
     }
 
 
