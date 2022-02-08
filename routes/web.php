@@ -82,4 +82,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('daycares/search/{email}', ['uses' => 'DaycareController@searchlogDC']);
 
   $router->get('events', ['uses' => 'DaycareController@showEvents']);
+
+  $router->post('events', ['uses' => 'DaycareController@addEvent']);
 });
