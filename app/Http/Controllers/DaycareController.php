@@ -42,7 +42,6 @@ class DaycareController extends Controller
         posts.type_id,
         posts.created_at,
         posts.child_id,
-        posts.picture,
         posts.message,
         posts.privacy,
         daycares.name as daycarename,
@@ -111,7 +110,7 @@ class DaycareController extends Controller
         return response()->json($comment, 200);
     }
 
-    public function postDiaryComment(Request $request, $id)
+    public function postDiaryComment(Request $request)
     {
         $comment = Diarycomments::create($request->all());
         return response()->json($comment, 201); 
