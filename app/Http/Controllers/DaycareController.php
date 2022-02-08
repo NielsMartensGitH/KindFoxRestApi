@@ -97,6 +97,20 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+    public function deleteDiaryComment($id)
+    {
+        Diarycomments::findOrFail($id)->delete();
+        return response('Deleted succesfully', 200);
+    }
+
+    public function editDiaryComment($id, Request $request)
+    {
+        $comment = Diarycomments::findOrFail($id);
+        $comment->update($request->all());
+
+        return response()->json($comment, 200);
+    }
+
 
     public function showPosts($daycare_id, $child_id)
     {

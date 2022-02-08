@@ -68,6 +68,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('diaries', ['uses' => 'DaycareController@showAllDiaries']);
 
   $router->get('diarycomments/{id}', ['uses' => 'DaycareController@getCommentsByDiary']);
+  
+  $router->delete('diarycomments/{id}', ['uses' => 'DaycareController@deleteDiaryComment']);
+
+  $router->put('diarycomments/{id}', ['uses' => 'DaycareController@editDiaryComment']);
 
   $router->post('diaries', ['uses' => 'DaycareController@addDiary']);
 
