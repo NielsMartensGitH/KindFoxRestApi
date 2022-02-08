@@ -111,6 +111,12 @@ class DaycareController extends Controller
         return response()->json($comment, 200);
     }
 
+    public function postDiaryComment(Request $request, $id)
+    {
+        $comment = Diarycomments::create($request->all());
+        return response()->json($comment, 201); 
+    }
+
 
     public function showPosts($daycare_id, $child_id)
     {

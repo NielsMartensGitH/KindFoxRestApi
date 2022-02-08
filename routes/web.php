@@ -73,6 +73,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->put('diarycomments/{id}', ['uses' => 'DaycareController@editDiaryComment']);
 
+  $router->post('diarycomments', ['uses' => 'DaycareController@postDiaryComment']);
+
   $router->post('diaries', ['uses' => 'DaycareController@addDiary']);
 
   $router->get('daycares/search/{email}', ['uses' => 'DaycareController@searchlogDC']);
