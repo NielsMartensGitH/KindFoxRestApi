@@ -91,6 +91,12 @@ class DaycareController extends Controller
         return response()->json($diary, 201);
     }
 
+    public function deleteDiary($id)
+    {
+        Diaries::findOrFail($id)->delete();
+        return response('Deleted succesfully', 200);
+    }
+
     public function getCommentsByDiary($id)
     {
         $result = DB::select("SELECT * FROM diarycomments WHERE diarycomments.diary_id = $id");
