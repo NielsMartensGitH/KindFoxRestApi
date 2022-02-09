@@ -13,7 +13,7 @@ class Posts extends Model
      * @var array
      */
     protected $fillable = [
-      'type_id', 'child_id', 'picture', 'message', 'daycare_id', 'privacy'         
+      'type_id', 'child_id', 'message', 'daycare_id', 'privacy'         
     ];
 
     /**

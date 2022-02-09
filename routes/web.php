@@ -30,6 +30,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('posts/{daycare_id}/{child_id}', ['uses' => 'DaycareController@showPosts']);
 
+  $router->get('images/{id}', ['uses' => 'DaycareController@showImagesPerPost']);
+
   $router->post('posts', ['uses' => 'DaycareController@addPost']);
 
   $router->delete('posts/{id}', ['uses' => 'DaycareController@deletePost']);
@@ -66,6 +68,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->delete('children/{id}', ['uses' => 'DaycareController@deleteChild']);
 
   $router->get('diaries', ['uses' => 'DaycareController@showAllDiaries']);
+  
+  $router->delete('diaries/{id}', ['uses' => 'DaycareController@deleteDiary']);
 
   $router->get('diarycomments/{id}', ['uses' => 'DaycareController@getCommentsByDiary']);
   
@@ -78,4 +82,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->post('diaries', ['uses' => 'DaycareController@addDiary']);
 
   $router->get('daycares/search/{email}', ['uses' => 'DaycareController@searchlogDC']);
+
+  $router->get('events', ['uses' => 'DaycareController@showEvents']);
+
+  $router->post('events', ['uses' => 'DaycareController@addEvent']);
 });

@@ -8,6 +8,7 @@ use App\Parents;
 use App\Childrens;
 use App\Comments;
 use App\Diaries;
+use App\Event;
 use App\Diarycomments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,6 @@ class DaycareController extends Controller
         posts.type_id,
         posts.created_at,
         posts.child_id,
-        posts.picture,
         posts.message,
         posts.privacy,
         daycares.name as daycarename,
@@ -91,6 +91,12 @@ class DaycareController extends Controller
         return response()->json($diary, 201);
     }
 
+    public function deleteDiary($id)
+    {
+        Diaries::findOrFail($id)->delete();
+        return response('Deleted succesfully', 200);
+    }
+
     public function getCommentsByDiary($id)
     {
         $result = DB::select("SELECT * FROM diarycomments WHERE diarycomments.diary_id = $id");
@@ -111,7 +117,7 @@ class DaycareController extends Controller
         return response()->json($comment, 200);
     }
 
-    public function postDiaryComment(Request $request, $id)
+    public function postDiaryComment(Request $request)
     {
         $comment = Diarycomments::create($request->all());
         return response()->json($comment, 201); 
@@ -129,6 +135,16 @@ class DaycareController extends Controller
     public function showOnePost($id)
     {
         $result = DB::select("SELECT * FROM posts WHERE posts.id = $id");
+        return json_encode($result);
+    }
+
+    public function showImagesPerPost($id)
+    {
+        $result = DB::select("SELECT posts.id, posts.message, images.id, images.imagepath 
+        FROM posts 
+        JOIN images 
+        ON posts.image_id = images.id 
+        WHERE posts.id = $id");
         return json_encode($result);
     }
 
@@ -235,6 +251,13 @@ class DaycareController extends Controller
         return response()->json($parent, 200);
     }
 
+    public function updateChildCheckIn($child_id, Request $request)
+    {
+        $child = Childrens::findOrFail($child_id);
+        $child->update($request->all());
+        return response()->json($child, 200);
+    }
+
 
     public function searchlogP($email){
         $results = DB::select(
@@ -259,4 +282,17 @@ class DaycareController extends Controller
          );
          return json_encode($results);
      }
+
+     public function showEvents()
+    {
+        $result = DB::select("SELECT * FROM events");
+        return json_encode($result);
+    }
+
+    public function addEvent(Request $request)
+    {
+        $event = Event::create($request->all());
+
+        return response()->json($event, 201);
+    }
 }
