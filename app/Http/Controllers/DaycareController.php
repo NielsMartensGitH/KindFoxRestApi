@@ -8,6 +8,7 @@ use App\Parents;
 use App\Childrens;
 use App\Comments;
 use App\Diaries;
+use App\Event;
 use App\Diarycomments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -277,4 +278,17 @@ class DaycareController extends Controller
          );
          return json_encode($results);
      }
+
+     public function showEvents()
+    {
+        $result = DB::select("SELECT * FROM events");
+        return json_encode($result);
+    }
+
+    public function addEvent(Request $request)
+    {
+        $event = Event::create($request->all());
+
+        return response()->json($event, 201);
+    }
 }
