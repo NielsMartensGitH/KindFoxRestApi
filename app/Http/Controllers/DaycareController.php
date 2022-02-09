@@ -136,8 +136,6 @@ class DaycareController extends Controller
     public function showChildParent($parent_id)
     {
         $result = DB::select("SELECT * FROM childrens
-        JOIN parents 
-        ON childrens.parent_id = parents.id
         WHERE childrens.parent_id = $parent_id" );
         return json_encode($result);
     }
