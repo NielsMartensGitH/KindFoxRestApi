@@ -90,4 +90,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('posts/search/{daycare_id}/{child_id}', ['uses' => 'DaycareController@getPosts']);
 
   $router->put('/children/{child_id}', ['uses' => 'DaycareController@updateChildCheckIn']);
+
+  $router->get('parentposts/{parent_id}/{daycare_id}', ['uses' => 'DaycareController@getPostsByParent']);
 });

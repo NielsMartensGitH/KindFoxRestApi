@@ -308,4 +308,22 @@ class DaycareController extends Controller
         $child->update($request->all());
         return response()->json($child, 200);
     }
+
+    public function getPostsByParent($parent_id, $daycare_id)
+    {
+        $result = DB::select("SELECT 
+        posts.id,
+        posts.created_at,
+        posts.type_id,
+        posts.child_id,
+        posts.message,
+        posts.image_id,
+        posts.daycare_id,
+        posts.privacy,
+        childrenparents.parent_id
+        FROM posts LEFT JOIN childrenparents ON posts.child_id = childrenparents.child_id
+        WHERE (parent_id = $parent_id OR parent_id IS NULL) AND daycare_id = $daycare_id");
+
+        return json_encode($result);     
+    }
 }
