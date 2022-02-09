@@ -30,6 +30,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('posts/{daycare_id}/{child_id}', ['uses' => 'DaycareController@showPosts']);
 
+  $router->get('images/{id}', ['uses' => 'DaycareController@showImagesPerPost']);
+
   $router->post('posts', ['uses' => 'DaycareController@addPost']);
 
   $router->delete('posts/{id}', ['uses' => 'DaycareController@deletePost']);
@@ -53,8 +55,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('children', ['uses' => 'DaycareController@showChildren']);
 
   $router->post('children', ['uses' => 'DaycareController@addChild']);
-
-  $router->put('/children/{child_id}', ['uses' => 'DaycareController@updateChildCheckIn']);
 
   $router->get('parents/{id}', ['uses' => 'DaycareController@showOneParent']);
 
