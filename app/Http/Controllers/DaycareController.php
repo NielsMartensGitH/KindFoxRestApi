@@ -302,10 +302,5 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
-    public function updateChildCheckIn($child_id, Request $request)
-    {
-        $child = Childrens::findOrFail($child_id);
-        $child->update($request->all());
-        return response()->json($child, 200);
-    }
+    
 }
