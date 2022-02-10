@@ -309,6 +309,14 @@ class DaycareController extends Controller
         return response()->json($child, 200);
     }
 
+    public function getEventsByDaycareId($daycare_id)
+    {
+        $result = DB::select("SELECT *
+        FROM events
+        WHERE events.daycare_id = $daycare_id");
+        return json_encode($result);     
+    }
+
     public function getPostsByParent($parent_id, $daycare_id)
     {
         $result = DB::select("SELECT 
