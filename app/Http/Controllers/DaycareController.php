@@ -320,8 +320,11 @@ class DaycareController extends Controller
         posts.image_id,
         posts.daycare_id,
         posts.privacy,
-        childrenparents.parent_id
+        childrenparents.parent_id,
+        daycares.avatar,
+        daycares.name
         FROM posts LEFT JOIN childrenparents ON posts.child_id = childrenparents.child_id
+        JOIN daycares ON daycares.id =  posts.daycare_id
         WHERE (parent_id = $parent_id OR parent_id IS NULL) AND daycare_id = $daycare_id");
 
         return json_encode($result);     
