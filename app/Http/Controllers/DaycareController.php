@@ -180,10 +180,12 @@ class DaycareController extends Controller
      public function getCommentsByPost($id)
      {
         $result = DB::select("SELECT
+        comments.id,
         comments.created_at,
         comments.comment,
         comments.post_id,
         comments.parent_id,
+        comments.daycare_id,
         parents.firstname,
         parents.lastname,
         parents.avatar as parentavatar, 
