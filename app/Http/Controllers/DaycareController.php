@@ -179,7 +179,20 @@ class DaycareController extends Controller
 
      public function getCommentsByPost($id)
      {
-        $result = DB::select("SELECT * FROM comments WHERE comments.post_id = $id");
+        $result = DB::select("SELECT
+        comments.created_at,
+        comments.comment,
+        comments.post_id,
+        comments.parent_id,
+        parents.firstname,
+        parents.lastname,
+        parents.avatar as parentavatar, 
+        daycares.name,
+        daycares.avatar
+        FROM comments
+        LEFT JOIN parents ON parents.id = comments.parent_id
+        LEFT JOIN daycares ON daycares.id = comments.daycare_id 
+        WHERE comments.post_id = $id");
         return json_encode($result);
      }
 
