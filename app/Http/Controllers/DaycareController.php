@@ -138,6 +138,12 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+    public function showDaycarePosts($id)
+    {
+        $result = DB::select("SELECT * FROM posts WHERE posts.daycare_id = $id");
+        return json_encode($result);
+    }
+
     public function showImagesPerPost($id)
     {
         $result = DB::select("SELECT posts.id, posts.message, images.id, images.imagepath 
