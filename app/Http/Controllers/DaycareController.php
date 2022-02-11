@@ -269,7 +269,7 @@ class DaycareController extends Controller
     {
         $child = Childrens::create($request->all());
 
-        return response()->json($child, 201);
+        return response()->json($child=> id, 201);
     }
 
     public function showOneParent($id)
@@ -370,6 +370,14 @@ class DaycareController extends Controller
         WHERE (parent_id = $parent_id OR parent_id IS NULL) AND daycare_id = $daycare_id
         ORDER BY posts.created_at DESC");
 
+        return json_encode($result);     
+    }
+
+    public function getChildById($child_id)
+    {
+        $result = DB::select("SELECT *
+        FROM childrens
+        WHERE childrens.id = $child_id");
         return json_encode($result);     
     }
 }
