@@ -269,7 +269,7 @@ class DaycareController extends Controller
     {
         $child = Childrens::create($request->all());
 
-        return response()->json($child=> id, 201);
+        return response()->json($child, 201);
     }
 
     public function showOneParent($id)
