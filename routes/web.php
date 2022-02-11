@@ -30,6 +30,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('daycareposts/{id}', ['uses' => 'DaycareController@showDaycarePosts']);
 
+  $router->get('daycarename/{id}', ['uses' => 'DaycareController@getDaycareName']);
+
   $router->get('posts/{daycare_id}/{child_id}', ['uses' => 'DaycareController@showPosts']);
 
   $router->get('images/{id}', ['uses' => 'DaycareController@showImagesPerPost']);

@@ -167,6 +167,12 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+    public function getDaycareName($id)
+    {
+        $result = DB::select("SELECT daycares.name FROM daycares WHERE daycares.id = $id");
+        return json_encode($result);
+    }
+
 
     public function showChildParent($parent_id)
     {
