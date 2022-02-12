@@ -392,4 +392,12 @@ class DaycareController extends Controller
         $result = DB::select("SELECT * FROM childrens WHERE childrens.daycare_id = $daycare_id");
         return json_encode($result);
     }
+
+    public function editChild($id, Request $request)
+     {
+        $child = Childrens::findOrFail($id);
+        $child->update($request->all());
+
+        return response()->json($child, 200);
+     }
 }
