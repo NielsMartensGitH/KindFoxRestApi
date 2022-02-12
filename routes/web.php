@@ -103,6 +103,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('daycarechildren/{daycare_id}', ['uses' => 'DaycareController@getChildrenFromDaycare']);
 
-  $router->put('/children/id}', ['uses' => 'DaycareController@editChild']);
+  $router->put('/children/edit/id}', ['uses' => 'DaycareController@editChild']);
   
 });
