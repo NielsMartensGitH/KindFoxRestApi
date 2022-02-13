@@ -18,19 +18,28 @@ $router->get('/', function () use ($router) {
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
+
+  // ==============ENDPOINTS FOR DAYCARES==============
+
   $router->get('daycares',  ['uses' => 'DaycareController@showDaycares']);
 
   $router->get('daycares/{id}', ['uses' => 'DaycareController@showOneDayCare']);
 
+  $router->get('daycarename/{id}', ['uses' => 'DaycareController@getDaycareName']);
+
+  $router->post("daycares", ['uses' => 'DaycareController@NewDaycare']);
+
+  // ENDPOINTS FOR SHOWING PARENTS OF CHILDREN
+
   $router->get('children/{parent_id}', ['uses' => 'DaycareController@showChildParent']);
+
+  // ENDPOINTS FOR POSTS 
 
   $router->get('posts', ['uses' => 'DaycareController@showAllPosts']);
 
   $router->get('posts/{id}', ['uses' => 'DaycareController@showOnePost']);
 
   $router->get('daycareposts/{id}', ['uses' => 'DaycareController@showDaycarePosts']);
-
-  $router->get('daycarename/{id}', ['uses' => 'DaycareController@getDaycareName']);
 
   $router->get('posts/{daycare_id}/{child_id}', ['uses' => 'DaycareController@showPosts']);
 
@@ -42,6 +51,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->put('posts/{id}', ['uses' => 'DaycareController@editPost']);
 
+  $router->get('posts/search/{daycare_id}/{child_id}', ['uses' => 'DaycareController@getPosts']);
+
+  // ENDPOINTS FOR POSTCOMMENTS
+
   $router->get('comments/{id}', ['uses' => 'DaycareController@getCommentsByPost']);
 
   $router->post('comments', ['uses' => 'DaycareController@postComment']);
@@ -50,26 +63,37 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->put('comments/{id}', ['uses' => 'DaycareController@editComment']);
   
+  // ENDPOINTS FOR PARENTS
+
   $router->get('parents', ['uses' => 'DaycareController@showAllParents']);
 
   $router->post('parents', ['uses' => 'DaycareController@addParent']);
   
   $router->delete('parents/{id}', ['uses' => 'DaycareController@deleteParent']);
 
+  $router->get('parents/{id}', ['uses' => 'DaycareController@showOneParent']);
+
+  $router->put('/parents/{parent_id}', ['uses' => 'DaycareController@updateParent']);
+
+  $router->get('parentposts/{parent_id}/{daycare_id}', ['uses' => 'DaycareController@getPostsByParent']);
+
+  // ENDPOINTS FOR CHILDREN
+
   $router->get('children', ['uses' => 'DaycareController@showChildren']);
 
   $router->post('children', ['uses' => 'DaycareController@addChild']);
 
-  $router->get('parents/{id}', ['uses' => 'DaycareController@showOneParent']);
+  $router->get('children/child/{child_id}', ['uses' => 'DaycareController@getChildById']);
 
-  $router->put('/parents/{parent_id}', ['uses' => 'DaycareController@updateParent']);
-  
+  $router->get('daycarechildren/{daycare_id}', ['uses' => 'DaycareController@getChildrenFromDaycare']);
 
-  $router->get('parents/search/{email}', ['uses' => 'DaycareController@searchlogP']);
-
-  $router->post("daycares", ['uses' => 'DaycareController@NewDaycare']);
+  $router->put('/children/edit/id}', ['uses' => 'DaycareController@editChild']);
 
   $router->delete('children/{id}', ['uses' => 'DaycareController@deleteChild']);
+
+  $router->put('/children/{child_id}', ['uses' => 'DaycareController@updateChildCheckIn']);
+
+  // ENDPOINTS FOR DIARIES
 
   $router->get('diaries', ['uses' => 'DaycareController@showAllDiaries']);
   
@@ -87,22 +111,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->get('daycares/search/{email}', ['uses' => 'DaycareController@searchlogDC']);
 
+  // ENDPOINTS FOR CALENDAR EVENTS
+
   $router->get('events', ['uses' => 'DaycareController@showEvents']);
 
   $router->post('events', ['uses' => 'DaycareController@addEvent']);
 
-  $router->get('posts/search/{daycare_id}/{child_id}', ['uses' => 'DaycareController@getPosts']);
-
-  $router->put('/children/{child_id}', ['uses' => 'DaycareController@updateChildCheckIn']);
-
-  $router->get('parentposts/{parent_id}/{daycare_id}', ['uses' => 'DaycareController@getPostsByParent']);
-
   $router->get('events/{daycare_id}', ['uses' => 'DaycareController@getEventsByDaycareId']);
 
-  $router->get('children/child/{child_id}', ['uses' => 'DaycareController@getChildById']);
-
-  $router->get('daycarechildren/{daycare_id}', ['uses' => 'DaycareController@getChildrenFromDaycare']);
-
-  $router->put('/children/edit/id}', ['uses' => 'DaycareController@editChild']);
+  // OTHER ENDPOINTS
   
+  $router->get('parents/search/{email}', ['uses' => 'DaycareController@searchlogP']);
 });
