@@ -498,7 +498,7 @@ class DaycareController extends Controller
         
     }
 
-        // FOR DAYCARES LOGIn
+        // FOR DAYCARES LOGIN
 
      public function searchlogDC($email){
          $results = DB::select(
