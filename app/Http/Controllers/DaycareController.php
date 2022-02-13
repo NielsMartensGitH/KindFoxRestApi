@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\DB;
 class DaycareController extends Controller
 {
 
-    // METHODS FOR DAYCARES
+
+// ===================  METHODS FOR DAYCARES =========================
+
 
         //  SHOWS ALL INFORMATION OF EVERY DAYCARE 
 
@@ -51,7 +53,9 @@ class DaycareController extends Controller
         return response()->json($daycare, 201);
     }
 
-    // METHOD FOR SHOXING PARENTS OF CHILDREN
+
+// ===================== METHODS FOR SHOXING PARENTS OF CHILDREN ====================
+
 
         // SHOWS ALL CHILDREN OF A SPECIFIC PARENT
 
@@ -62,7 +66,9 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
-    // METHODS FOR POSTS
+
+//  ========================= METHODS FOR POSTS =============================
+
 
         // SHOWS ALL POSTS WITH DAYCARE INFO ADDED TO EACH POST
 
@@ -169,7 +175,9 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
-    // METHODS FOR POSTCOMMENTS
+
+// ===================== METHODS FOR POSTCOMMENTS ==============================
+
 
         // SHOWS ALL THE COMMENTS OF A SPECIFIC POSTS INCLUDING THE PARENTS AND DAYCARE COMMENTS
 
@@ -221,7 +229,9 @@ class DaycareController extends Controller
         return response()->json($comment, 200);
      }
 
-     // METHODS FOR PARENTS
+
+// =========================  METHODS FOR PARENTS ==============================
+
 
         // SHOWS EVERY PARENT
 
@@ -298,7 +308,9 @@ class DaycareController extends Controller
          return json_encode($result);     
      }
 
-     // METHODS FOR CHILDREN
+
+// =======================  METHODS FOR CHILDREN ========================
+
 
         // SHOW ALL THE CHILDREN FROM EVERY DAYCARE
 
@@ -369,7 +381,8 @@ class DaycareController extends Controller
     //     return response()->json($child, 200);
     // }
 
-     // ENDPOINTS FOR DIARIES
+
+// =======================  METHODS FOR DIARIES =========================
 
 
         // SHOWS ALL THE DIARIES
@@ -421,7 +434,9 @@ class DaycareController extends Controller
         return response()->json($diary, 201);
     }
 
-    // METHODS FOR DIARY COMMENTS
+
+// ====================== METHODS FOR DIARY COMMENTS ==========================
+
 
         // GET EVERY COMMENT BY A SPECIFIC DIARY
 
@@ -457,7 +472,9 @@ class DaycareController extends Controller
         return response()->json($comment, 201); 
     }
 
-    // METHODS FOR CALENDAR EVENTS
+
+// =====================  METHODS FOR CALENDAR EVENTS =============================
+
 
         // SHOW EVERY EVENT
 
@@ -486,7 +503,9 @@ class DaycareController extends Controller
         return json_encode($result);     
     }
 
-    // AUTHORIZATION METHODS
+
+// ========================= AUTHORIZATION METHODS =========================
+
 
         // FOR PARENTS LOGIN
    
