@@ -34,7 +34,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // CREATES A NEW DAYCARE AFTER REGISTRATION
   $router->post("daycares", ['uses' => 'DaycareController@NewDaycare']);
 
-  // ENDPOINTS FOR SHOWING PARENTS OF CHILDREN
+  // ===================  ENDPOINTS FOR SHOWING PARENTS OF CHILDREN =============
 
   // SHOWS ALL CHILDREN OF A SPECIFIC PARENT
   $router->get('children/{parent_id}', ['uses' => 'DaycareController@showChildParent']);
@@ -149,7 +149,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   // ============================ ENDPOINTS FOR DIARY COMMENTS =============================
 
-  
+
   // GET EVERY COMMENT BY A SPECIFIC DIARY
   $router->get('diarycomments/{id}', ['uses' => 'DaycareController@getCommentsByDiary']);
   
