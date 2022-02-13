@@ -19,7 +19,7 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-  // ==============ENDPOINTS FOR DAYCARES==============
+  // ENDPOINTS FOR DAYCARES
 
   $router->get('daycares',  ['uses' => 'DaycareController@showDaycares']);
 
@@ -99,6 +99,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
   $router->delete('diaries/{id}', ['uses' => 'DaycareController@deleteDiary']);
 
+  $router->post('diaries', ['uses' => 'DaycareController@addDiary']);
+
+  // ENDPOINTS FOR DIARY COMMENTS
+
   $router->get('diarycomments/{id}', ['uses' => 'DaycareController@getCommentsByDiary']);
   
   $router->delete('diarycomments/{id}', ['uses' => 'DaycareController@deleteDiaryComment']);
@@ -107,9 +111,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->post('diarycomments', ['uses' => 'DaycareController@postDiaryComment']);
 
-  $router->post('diaries', ['uses' => 'DaycareController@addDiary']);
 
-  $router->get('daycares/search/{email}', ['uses' => 'DaycareController@searchlogDC']);
 
   // ENDPOINTS FOR CALENDAR EVENTS
 
@@ -120,6 +122,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('events/{daycare_id}', ['uses' => 'DaycareController@getEventsByDaycareId']);
 
   // OTHER ENDPOINTS
-  
+
   $router->get('parents/search/{email}', ['uses' => 'DaycareController@searchlogP']);
+
+  $router->get('daycares/search/{email}', ['uses' => 'DaycareController@searchlogDC']);
 });
