@@ -12,6 +12,7 @@ use App\Comments;
 use App\Diaries;
 use App\Event;
 use App\Diarycomments;
+use App\Images;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -434,6 +435,39 @@ class DaycareController extends Controller
         return response()->json($diary, 201);
     }
 
+        // GET DIARY OF SPECIFIC CHILDREN
+
+        public function showChildDiary($child_id)
+        {
+            $result = DB::select("SELECT
+            diaries.id,
+            diaries.type_id,
+            diaries.created_at,
+            diaries.child_id,
+            diaries.food,
+            diaries.foodSmile,
+            diaries.sleep,
+            diaries.sleepSmile,
+            diaries.poop,
+            diaries.mood,
+            diaries.activities,
+            diaries.involvement,
+            diaries.extra_message,
+            diaries.privacy,
+            childrens.child_firstname as child_firstname,
+            childrens.child_lastname as child_lastname,
+            daycares.name as daycarename,
+            daycares.avatar as daycareavatar
+            FROM diaries
+            JOIN daycares
+            ON daycares.id =  diaries.daycare_id
+            JOIN childrens
+            ON childrens.id = diaries.child_id
+            WHERE diaries.child_id = $child_id
+            ORDER BY diaries.created_at DESC");
+            return json_encode($result);
+        }  
+
 
 // ====================== METHODS FOR DIARY COMMENTS ==========================
 
@@ -442,8 +476,25 @@ class DaycareController extends Controller
 
     public function getCommentsByDiary($id)
     {
-        $result = DB::select("SELECT * FROM diarycomments WHERE diarycomments.diary_id = $id");
+        $result = DB::select("SELECT
+        diarycomments.id,
+        diarycomments.created_at,
+        diarycomments.comment,
+        diarycomments.diary_id,
+        diarycomments.parent_id,
+        diarycomments.daycare_id,
+        parents.firstname,
+        parents.lastname,
+        parents.avatar as parentavatar, 
+        daycares.name,
+        daycares.avatar
+        FROM diarycomments
+        LEFT JOIN parents ON parents.id = diarycomments.parent_id
+        LEFT JOIN daycares ON daycares.id = diarycomments.daycare_id 
+        WHERE diarycomments.diary_id = $id");
         return json_encode($result);
+        // $result = DB::select("SELECT * FROM diarycomments WHERE diarycomments.diary_id = $id");
+        // return json_encode($result);
     }
 
         // DELETE A DIARY COMMENT
@@ -526,13 +577,16 @@ class DaycareController extends Controller
          return json_encode($results);
      }
 
-    
+// ======================== IMAGE METHODS =========================    
 
-   
+     // POST IMAGE NAMES
 
-   
+     public function postImageName(Request $request)
+    {
+        $image = Images::create($request->all());
+        return response()->json($image, 201);
+     }
 
-   
 
-    
+      
 }

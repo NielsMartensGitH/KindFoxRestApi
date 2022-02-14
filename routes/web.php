@@ -83,7 +83,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   // DELETE A COMMENT
   $router->delete('comments/{id}', ['uses' => 'DaycareController@deleteComment']);
 
-  // EDIT A COMMEN
+  // EDIT A COMMENT
   $router->put('comments/{id}', ['uses' => 'DaycareController@editComment']);
   
   
@@ -125,7 +125,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('daycarechildren/{daycare_id}', ['uses' => 'DaycareController@getChildrenFromDaycare']);
 
   // EDITS A CHILD
-  $router->put('/children/edit/id}', ['uses' => 'DaycareController@editChild']);
+  $router->put('/children/edit/{id}', ['uses' => 'DaycareController@editChild']);
 
   // DELETE A CHILD
   $router->delete('children/{id}', ['uses' => 'DaycareController@deleteChild']);
@@ -146,6 +146,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   // ADDS A DIARY
   $router->post('diaries', ['uses' => 'DaycareController@addDiary']);
 
+  // GET DIARY BY CHILD ID
+
+  $router->get('diaries/{child_id}', ['uses' => 'DaycareController@showChildDiary']);
 
   // ============================ ENDPOINTS FOR DIARY COMMENTS =============================
 
@@ -183,4 +186,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   // FOR DAYCARES LOGIN
   $router->get('daycares/search/{email}', ['uses' => 'DaycareController@searchlogDC']);
+
+// ============================= IMAGE ENDPOINTS =================================================================
+
+  // POST IMAGE NAMES
+
+  $router->posts('images', ['uses' => 'DaycareController@postImageName']);
+
 });
