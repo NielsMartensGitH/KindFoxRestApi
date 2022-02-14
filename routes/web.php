@@ -191,6 +191,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   // POST IMAGE NAMES
 
-  $router->posts('images', ['uses' => 'DaycareController@postImageName']);
+  $router->post('images', ['uses' => 'DaycareController@postImageName']);
 
 });
