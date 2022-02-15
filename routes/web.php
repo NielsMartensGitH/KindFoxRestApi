@@ -193,4 +193,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->post('images', ['uses' => 'DaycareController@postImageName']);
 
+  $router->post('postsimages', ['uses' => 'DaycareController@postsImages']);
+
 });

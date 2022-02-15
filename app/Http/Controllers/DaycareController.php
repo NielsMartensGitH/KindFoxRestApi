@@ -147,7 +147,7 @@ class DaycareController extends Controller
     {
         $post = Posts::create($request->all());
 
-        return response()->json($post, 201);
+        return response()->json($post->id, 201);
     }
 
         // DELETES A POST
@@ -584,9 +584,17 @@ class DaycareController extends Controller
      public function postImageName(Request $request)
     {
         $image = Images::create($request->all());
-        return response()->json($image, 201);
+        return response()->json($image->id, 201);
      }
 
+     public function createpivot(Request $request)
+     {
+        DB::table('posts_images')->insert([
+            'post_id'=>$request->post_id,
+            'image_id'=>$request->image_id
+        ]);
 
+        return response()->json(201);
+     }
       
 }
