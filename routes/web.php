@@ -196,4 +196,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->post('postsimages', ['uses' => 'DaycareController@createpivot']);
 
   $router->get('postsimages/{post_id}', ['uses' => 'DaycareController@getImagesByPost']);
+
+  $router->get('postsimages', ['uses' => 'DaycareController@createpivot']);
 });
