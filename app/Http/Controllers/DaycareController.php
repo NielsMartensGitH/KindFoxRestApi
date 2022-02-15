@@ -596,5 +596,16 @@ class DaycareController extends Controller
 
         return response()->json(201);
      }
+
+     public function getImagesByPost($post_id)
+    {
+        $result = DB::select("SELECT
+        images.imagepath
+        FROM images
+        JOIN posts_images
+        ON images.id = posts_images.image_id
+        WHERE posts_images.post_id = $post_id");
+        return json_encode($result);
+    }
       
 }
