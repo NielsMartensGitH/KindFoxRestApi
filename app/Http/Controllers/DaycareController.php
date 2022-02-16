@@ -67,6 +67,8 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+        
+
 
 //  ========================= METHODS FOR POSTS =============================
 
@@ -327,8 +329,20 @@ class DaycareController extends Controller
     {
         $child = Childrens::create($request->all());
 
-        return response()->json($child, 201);
+        return response()->json($child->id, 201);
     }
+
+     // PIVOT OF PARENTS AND CHILDREN
+
+     public function pivotChildParent(Request $request)
+     {
+        DB::table('childrenparents')->insert([
+            'child_id'=>$request->child_id,
+            'parent_id'=>$request->parent_id
+        ]);
+
+        return response()->json(201);
+     }    
 
         // GET A SPECIFIC CHILD BY THEIR ID
 

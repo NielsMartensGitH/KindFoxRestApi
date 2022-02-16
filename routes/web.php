@@ -118,6 +118,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   // ADDS A CHILD
   $router->post('children', ['uses' => 'DaycareController@addChild']);
 
+  // ADDS CHILD ID AND PARENT ID INTO THE PIVOT TABLE CHILDRENPARENTS
+
+  $router->post('childrenparents', ['uses' => 'DaycareController@pivotChildParent']);
+
   // GET A SPECIFIC CHILD BY THEIR ID
   $router->get('children/child/{child_id}', ['uses' => 'DaycareController@getChildById']);
 
