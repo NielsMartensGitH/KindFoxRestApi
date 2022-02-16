@@ -93,6 +93,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   // SHOWS EVERY PARENT
   $router->get('parents', ['uses' => 'DaycareController@showAllParents']);
 
+  // GET ALL THE CHILDREN DY THE DAYCARE ID
+  $router->get('daycareparents/{daycare_id}', ['uses' => 'DaycareController@getParentsByDaycareId']);
+
    // ADDS A PARENT
   $router->post('parents', ['uses' => 'DaycareController@addParent']);
   
