@@ -444,9 +444,32 @@ class DaycareController extends Controller
 
     public function getDiariesByDaycareId($daycare_id)
     {
-        $result = DB::select("SELECT *
+        $result = DB::select("SELECT 
+        diaries.id,
+        diaries.type_id,
+        diaries.created_at,
+        diaries.child_id,
+        diaries.food,
+        diaries.foodSmile,
+        diaries.sleep,
+        diaries.sleepSmile,
+        diaries.poop,
+        diaries.mood,
+        diaries.activities,
+        diaries.involvement,
+        diaries.extra_message,
+        diaries.privacy,
+        childrens.child_firstname as child_firstname,
+        childrens.child_lastname as child_lastname,
+        daycares.name as daycarename,
+        daycares.avatar as daycareavatar
         FROM diaries
-        WHERE diaries.daycare_id = $daycare_id");
+        JOIN daycares
+        ON daycares.id =  diaries.daycare_id
+        JOIN childrens
+        ON childrens.id = diaries.child_id
+        WHERE diaries.daycare_id = $daycare_id
+        ORDER BY diaries.created_at DESC");
         return json_encode($result);     
     }
 
