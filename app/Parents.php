@@ -13,7 +13,7 @@ class Parents extends Model
      * @var array
      */
     protected $fillable = [
-      'firstname', 'lastname', 'login', 'password', 'daycare_id', 'phone', 'avatar'      
+      'firstname', 'lastname', 'login', 'email', 'password', 'daycare_id', 'phone', 'avatar'      
     ];
 
     /**
