@@ -440,6 +440,16 @@ class DaycareController extends Controller
         return json_encode($result);
     }
 
+    // GET ALL THE DIARIES OF A SPECIFIC DAYCARE
+
+    public function getDiariesByDaycareId($daycare_id)
+    {
+        $result = DB::select("SELECT *
+        FROM diaries
+        WHERE diaries.daycare_id = $daycare_id");
+        return json_encode($result);     
+    }
+
         // DELETES A DIARY
 
     public function deleteDiary($id)
