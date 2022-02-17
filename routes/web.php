@@ -158,7 +158,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('diaries/{child_id}', ['uses' => 'DaycareController@showChildDiary']);
 
   // GET ALL THE DIARIES OF A SPECIFIC DAYCARE
-  $router->get('diaries/{daycare_id}', ['uses' => 'DaycareController@getDiariesByDaycareId']);
+  $router->get('diaries/daycare_id/{daycare_id}', ['uses' => 'DaycareController@getDiariesByDaycareId']);
 
   // ============================ ENDPOINTS FOR DIARY COMMENTS =============================
 
